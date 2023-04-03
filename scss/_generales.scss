@@ -1,0 +1,48 @@
+nav {
+    background-color: $background-color_1;
+    color: $color_2;
+    font-weight: bold;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+footer {
+	text-align: center;
+	padding: 10px 0px;
+	font-size: small;
+	background-color: $background-color_1;
+	margin-top: auto;
+}
+
+.redes {
+	margin-top: 20px;
+}
+
+.redes_link {
+	text-decoration: none;
+    color: $color_2;
+	margin: 20px;
+	font-size: small;
+}
+
+.redes_icono {
+	width: 50px;
+	height: 50px;
+}
+
+.textoFooter {
+    color: $color_2;
+}
+
+.textoRed {
+    margin-left: 15px;
+}
+
+svg {
+    color: $color_2;
+    display: flex;
+    justify-content: center;
+}
