@@ -14,7 +14,6 @@ let turno4_estado = "disponible";
 let continuar = 1;
 
 
-console.log('Bienvenido a la central de turnos'); // Mensaje de bienvenida
 let usuario = prompt('CENTRAL DE TURNOS\n------------\n\nBienvenido a la central de turnos\n\nPor favor ingrese su nombre: '); // Ingreso del nombre del usuario
 
 

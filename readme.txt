@@ -1,6 +1,6 @@
 # Project Title
 
-Clínica de Traumatología - Curso de JavaScript
+Central de Turnos - Curso de JavaScript
 
 ## Authors
 
@@ -9,19 +9,31 @@ Clínica de Traumatología - Curso de JavaScript
 
 ## Documentation
 
-El proyecto es una Central de Turnos de una Clínica de Traumatología, en la cual los usuarios podrán elegir entre cuatro franjas horarias el turno a reservar.
+El proyecto es una Central de Turnos de una Clínica de Traumatología, en la cual los usuarios podrán reservar un turno teniendo a disposición diferentes alternativas.
 
-Para el proyecto se utilizó:
+Para el proyecto se utilizo:
 
 * HTML
 * CSS
 * JavaScript
 
+
 ## Feedback
 
-Esta central de turnos es solamente de uso para el proyecto presentado en el curso de JavaScript de CoderHouse, su estructura no puede ser o debiera ser tomada necesariamente como propuesta para un proyecto real.
+Esta central de turnos es solamente de uso para el proyecto presentado en el curso de JavaScript de CoderHouse comision 39505, su estructura no puede ser o debiera ser tomada necesariamente como propuesta para un proyecto real.
+
 
 ## Used By
 
-Este proyecto puede ser usado para tener guías básicas de cómo abordar los conceptos en el curso de JavaScript de CoderHouse para poder realizar una central de turnos.
+Este proyecto puede ser usado para tener guías básicas de cómo realizar una central de turnos.
 
+
+## Versions
+
+1.1)
+* Estructura general con html y css.
+* Logica del modelo inicial con JavaScript.
+* Prompts de input para que el usuario elija entre 4 opciones de turnos.
+* Validacion con condicional para saber si el turno esta disponible u ocupado.
+* Funcion que se encarga de reservar el turno.
+* Bucle para permitirle al usuario reservar mas de un turno.
