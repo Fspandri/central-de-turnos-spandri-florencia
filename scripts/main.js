@@ -1,76 +1,83 @@
-// defino los turnos
-let turno1_descripcion = '09 a 11hs';
-let turno2_descripcion = '11 a 13hs';
-let turno3_descripcion = '13 a 15hs';
-let turno4_descripcion = '15 a 17hs';
+//Definiciones
 
-// defino el estado de los turnos
-let turno1_estado = "disponible";
-let turno2_estado = "disponible";
-let turno3_estado = "disponible";
-let turno4_estado = "disponible";
+let repetirBucle = false;
 
-// otras variables
-let continuar = 1;
+const turnos = [
+    {id: 0, horario: "10/5: de 9:00 a 9:30", disponible: true},
+    {id: 1, horario: "10/5: de 9:30 a 10:00", disponible: true},
+    {id: 2, horario: "10/5: de 10:00 a 10:30", disponible: false},
+    {id: 3, horario: "10/5: de 10:30 a 11:00", disponible: false},
+    {id: 4, horario: "10/5: de 11:00 a 11:30", disponible: true},
+    {id: 5, horario: "10/5: de 11:30 a 12:00", disponible: true},
+];
+let turnosDisponibles = [];
 
+let pacientes = [];
 
-let usuario = prompt('CENTRAL DE TURNOS\n------------\n\nBienvenido a la central de turnos\n\nPor favor ingrese su nombre: '); // Ingreso del nombre del usuario
-
-
-// Creo un ciclo por si el usuario quiere hacer otra reserva
-while(continuar == 1) {
-    
-    let turnoSeleccionado = prompt('CENTRAL DE TURNOS\n------------\n\n1) '+turno1_descripcion+': '+turno1_estado+'\n2) '+turno2_descripcion+': '+turno2_estado+'\n3) '+turno3_descripcion+': '+turno3_estado+'\n4) '+turno4_descripcion+': '+turno4_estado+'\n\nSeleccione un turno para reservar: '); // Ingreso del turno elegido
-    
-    let confirmacionReserva = reservarTurno(turnoSeleccionado); // Ejecuto la funcion de reservar un turno, si se confirma la reserva devuelve true
-
-    if (confirmacionReserva == true) {
-        window.alert(usuario+' su reserva fue realizada con exito'); // La reserva se realizo con exito
-        confirmacionReserva == false; // Vuelvo la confirmacion de reserva al estado inicial (false)
-    }else{
-        window.alert(usuario+' hubo un problema para realizar su reserva') // No se hizo la reserva
+class Paciente{
+    constructor(nombre, apellido, edad, horario) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.edad = edad;
+        this.horario = horario;
     }
-    
-    // Consulto si quiere continuar o salir
-    continuar = parseInt(prompt('CENTRAL DE TURNOS\n------------\n\nPresione (1) para continuar o (0) para salir: '));
 }
 
-window.alert(usuario+' muchas gracias por su visita!!')
+
+//Inicio
+console.log("Bienvenidos a la Central de Turnos");
+
+//Ingreso datos paciente
+let nombrePaciente = prompt("Por favor ingrese su nombre: ");
+let apellidoPaciente = prompt("Por favor ingrese su apellido: ");
+let edadPaciente = prompt("Por favor ingrese su edad: ");
+
+//Ciclo se repite mientras repetirBucle = true
+do{
+    //Filtro los turnos disponibles
+    turnosDisponibles = turnos.filter((elemento) => elemento.disponible == true);
+
+    //Si no hay turnos disponiles finalizo
+    if(turnosDisponibles.length ==0){
+        console.log("No hay turnos disponibles");
+        repetirBucle = false;
+    }else{
+        //Si hay turnos disponibles los muestro
+        mostrarDisponibles();
+        
+        //Seleccion del turno a reservar
+        let turnoSeleccionado = prompt("Elija el número del turno que desea reservar: ");
+
+        //Modifico la propiedad disponible a false
+        turnos[turnosDisponibles[turnoSeleccionado-1].id].disponible = false;
+        
+        //Creo un paciente y horario y lo cargo al array pacientes
+        const paciente1 = new Paciente(nombrePaciente, apellidoPaciente, edadPaciente, turnosDisponibles[turnoSeleccionado-1].horario);
+        pacientes.push(paciente1);
+        
+        console.log("Turno reservado con exito");
+        
+        //Reservar otro turno o continuar
+        let continuarSalir = prompt("Presione (1) para agendar otro turno o (2) para salir: ")
+        if(continuarSalir == 1){
+            repetirBucle = true;
+        }else{
+            repetirBucle = false;
+        }
+    }
+}while(repetirBucle == true);
+
+//Fin
+console.log("Gracias por su visita!");
+console.log(pacientes);
 
 
 
-// Evaluar si el turno seleccionado esta disponible y si es el caso reservarlo
-function reservarTurno(turnoSeleccionado) {
-    switch(turnoSeleccionado) {
-        case '1':
-            if(turno1_estado == "disponible"){
-                turno1_estado = "reservado";
-                return true;
-            }
-            return false;
-            
-        case '2':
-            if(turno2_estado == "disponible"){
-                turno2_estado = "reservado";
-                return true;
-            }
-            return false;
-            
-        case '3':
-            if(turno3_estado == "disponible"){
-                turno3_estado = "reservado";
-                return true;
-            }
-            return false;
-            
-        case '4':
-            if(turno4_estado == "disponible"){
-                turno4_estado = "reservado";
-                return true;
-            }
-            return false;
-            
-        default:
-            return false;
-    }    
+//Funcion muestra la propiedad horario de cada turno disponible
+function mostrarDisponibles(){
+    let index = 1;
+    for (const turnoDisponible of turnosDisponibles) {
+        console.log(index + ") " + turnoDisponible.horario);
+        index++;
+    }
 }

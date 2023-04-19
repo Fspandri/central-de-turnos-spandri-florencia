@@ -37,3 +37,9 @@ Este proyecto puede ser usado para tener guías básicas de cómo realizar una c
 * Validacion con condicional para saber si el turno esta disponible u ocupado.
 * Funcion que se encarga de reservar el turno.
 * Bucle para permitirle al usuario reservar mas de un turno.
+
+1.2)
+* Definición de Array de objetos para los horarios.
+* Función de Orden Superior (Filter) para filtrar los horarios disponibles.
+* Clase con constructor para carga de Paciente y horario asignado.
+* Array de pacientes cargado por Push.
