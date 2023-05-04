@@ -1,83 +1,99 @@
 //Definiciones
-
-let repetirBucle = false;
-
-const turnos = [
-    {id: 0, horario: "10/5: de 9:00 a 9:30", disponible: true},
-    {id: 1, horario: "10/5: de 9:30 a 10:00", disponible: true},
-    {id: 2, horario: "10/5: de 10:00 a 10:30", disponible: false},
-    {id: 3, horario: "10/5: de 10:30 a 11:00", disponible: false},
-    {id: 4, horario: "10/5: de 11:00 a 11:30", disponible: true},
-    {id: 5, horario: "10/5: de 11:30 a 12:00", disponible: true},
+let turnos = JSON.parse(localStorage.getItem("turnosLocal")) || [
+    {id: "0", fecha: "10/5", horario: "9:00 a 9:30", disponible: true},
+    {id: "1", fecha: "10/5", horario: "9:30 a 10:00", disponible: true},
+    {id: "2", fecha: "10/5", horario: "10:00 a 10:30", disponible: true},
+    {id: "3", fecha: "10/5", horario: "10:30 a 11:00", disponible: true},
+    {id: "4", fecha: "10/5", horario: "11:00 a 11:30", disponible: true},
+    {id: "5", fecha: "10/5", horario: "11:30 a 12:00", disponible: true},
 ];
+
 let turnosDisponibles = [];
 
-let pacientes = [];
+let pacientes = JSON.parse(localStorage.getItem("pacientesLocal")) || [];
+
+let pacienteNuevo = [];
 
 class Paciente{
-    constructor(nombre, apellido, edad, horario) {
+    constructor(nombre, apellido, edad, email, fecha, horario) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.edad = edad;
+        this.email = email;
+        this.fecha = fecha;
         this.horario = horario;
     }
 }
 
 
+
 //Inicio
-console.log("Bienvenidos a la Central de Turnos");
+mostrarDisponibles();
+confirmacionTurno();
 
-//Ingreso datos paciente
-let nombrePaciente = prompt("Por favor ingrese su nombre: ");
-let apellidoPaciente = prompt("Por favor ingrese su apellido: ");
-let edadPaciente = prompt("Por favor ingrese su edad: ");
 
-//Ciclo se repite mientras repetirBucle = true
-do{
+//Funcion muestra los turnos disponibles
+function mostrarDisponibles(){ 
+    
     //Filtro los turnos disponibles
     turnosDisponibles = turnos.filter((elemento) => elemento.disponible == true);
 
-    //Si no hay turnos disponiles finalizo
-    if(turnosDisponibles.length ==0){
-        console.log("No hay turnos disponibles");
-        repetirBucle = false;
-    }else{
-        //Si hay turnos disponibles los muestro
-        mostrarDisponibles();
-        
-        //Seleccion del turno a reservar
-        let turnoSeleccionado = prompt("Elija el número del turno que desea reservar: ");
+    let dom_turnosDisponibles = document.getElementById("turnosDisponibles");
+    
+    //Inicializo vacio
+    dom_turnosDisponibles.innerHTML = "";
 
-        //Modifico la propiedad disponible a false
-        turnos[turnosDisponibles[turnoSeleccionado-1].id].disponible = false;
+    //Cargo los disponibles o informo que no hay
+    if(turnosDisponibles.length == 0){
+        dom_turnosDisponibles.innerHTML = `
+            <p>No hay turnos disponibles</p>
+        `
+    }else{
+        turnosDisponibles.forEach((turno) => {
+            dom_turnosDisponibles.innerHTML += `
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="inputTurnosDisponibles" id="${turno.id}">
+                    <label class="form-check-label" for="${turno.id}">
+                    ${turno.fecha} - ${turno.horario}
+                    </label>
+                </div>
+            `
+        })
+    }
+};
+
+
+//Funcion confirmacion de turno
+function confirmacionTurno(){
+    let dom_botonReservar = document.getElementById("botonReservar");
+
+    dom_botonReservar.onclick = () => {
+
+        let horarioSeleccionado = document.querySelector('input[name="inputTurnosDisponibles"]:checked');
+        let nombre = document.getElementById("inputNombre").value;
+        let apellido = document.getElementById("inputApellido").value;
+        let edad = parseInt(document.getElementById("inputEdad").value);
+        let email = document.getElementById("inputEmail").value;
         
-        //Creo un paciente y horario y lo cargo al array pacientes
-        const paciente1 = new Paciente(nombrePaciente, apellidoPaciente, edadPaciente, turnosDisponibles[turnoSeleccionado-1].horario);
-        pacientes.push(paciente1);
         
-        console.log("Turno reservado con exito");
-        
-        //Reservar otro turno o continuar
-        let continuarSalir = prompt("Presione (1) para agendar otro turno o (2) para salir: ")
-        if(continuarSalir == 1){
-            repetirBucle = true;
-        }else{
-            repetirBucle = false;
+        if(horarioSeleccionado && nombre!="" && apellido!="" && edad>0 && email!="") {
+            //Modifico la propiedad disponible de ese horario a false y lo guardo en local storage
+            turnos[horarioSeleccionado.id].disponible = false;
+            localStorage.setItem("turnosLocal", JSON.stringify(turnos));
+
+            // Creo un paciente y horario, lo cargo al array pacientes, y guardo en local storage
+            pacienteNuevo = new Paciente(nombre, apellido, edad, email, turnos[horarioSeleccionado.id].fecha, turnos[horarioSeleccionado.id].horario);
+            pacientes.push(pacienteNuevo);
+            localStorage.setItem("pacientesLocal", JSON.stringify(pacientes));
+
+            alert("Turno confirmado");
+
+            // Reseteo el formulario y actualizo la vista de turnos disponibles
+            formReserva.reset();
+            mostrarDisponibles();
+        } else {
+            alert('Por favor revise los datos ingresados');
         }
     }
-}while(repetirBucle == true);
-
-//Fin
-console.log("Gracias por su visita!");
-console.log(pacientes);
-
-
-
-//Funcion muestra la propiedad horario de cada turno disponible
-function mostrarDisponibles(){
-    let index = 1;
-    for (const turnoDisponible of turnosDisponibles) {
-        console.log(index + ") " + turnoDisponible.horario);
-        index++;
-    }
 }
+

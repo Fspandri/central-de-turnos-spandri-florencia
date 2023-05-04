@@ -43,3 +43,10 @@ Este proyecto puede ser usado para tener guías básicas de cómo realizar una c
 * Función de Orden Superior (Filter) para filtrar los horarios disponibles.
 * Clase con constructor para carga de Paciente y horario asignado.
 * Array de pacientes cargado por Push.
+
+1.3)
+* Logica de reserva de turnos.
+* Manejo de DOM.
+* Uso de eventos.
+* Almacenamiento en local storage con JSON
+

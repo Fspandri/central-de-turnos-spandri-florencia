@@ -42,7 +42,6 @@
                     <div class="navbar-nav">
                         <a class="nav-link" href="#seccionTurnos">Reserva de Turnos</a>
                         <a class="nav-link" href="#seccionSedes">Sedes</a>
-                        <a class="nav-link" href="#seccionContacto">Contacto</a>
                     </div>
                 </div>
             </div>
@@ -82,22 +81,55 @@
 
             <div class="estiloTurnos">
 
-                <h2>Reserva de turnos</h2>
+                <h2 class="mt-5 ms-5">Reserva de Turnos</h2>
 
-                <h3>Profesionales</h3>
-
-                <p>Dr. Juan Perez</p>
-
-                <p>Dra. María Gomez</p>
-
-                <button class="btn botonReserva">Reservar Turno</button>
+                <div>
+                    <div class="row">
+                        <div class="col-md-12 d-flex justify-content-center">
+    
+                            <form class="estiloFormulario p-3 w-50" id="formReserva">
+    
+                                <h4>Ingrese sus Datos</h4>
+    
+                                <div class="my-3">
+                                    <label for="nombre">Nombre</label>
+                                    <input type="text" class="form-control shadow-none border border-secondary-subtle"
+                                        placeholder="Ingrese su Nombre" id="inputNombre">
+                                </div>
+                                <div class="my-3">
+                                    <label for="nombre">Apellido</label>
+                                    <input type="text" class="form-control shadow-none border border-secondary-subtle"
+                                        placeholder="Ingrese su Apellido" id="inputApellido">
+                                </div>
+                                <div class="my-3">
+                                    <label for="nombre">Edad</label>
+                                    <input type="number" class="form-control shadow-none border border-secondary-subtle"
+                                        placeholder="Ingrese su Edad" id="inputEdad">
+                                </div>
+                                <div class="my-3">
+                                    <label for="nombre">Email</label>
+                                    <input type="email" class="form-control shadow-none border border-secondary-subtle"
+                                        placeholder="Ingrese su Email" id="inputEmail">
+                                </div>
+    
+    
+                                <h4>Seleccione el Turno</h4>
+    
+                                <div id="turnosDisponibles"></div>
+    
+                                <div class="d-flex justify-content-center">
+                                    <button type="button" class="btn botonFormulario" id="botonReservar">Reservar</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
-
         </section>
 
         <!-- SECCION SEDES -->
         <section id="seccionSedes">
-            <div class="estiloSedes">
+            <div class="estiloSedes mb-5">
 
                 <h2>Sedes</h2>
 
@@ -124,48 +156,10 @@
             </div>
         </section>
 
-        <!-- SECCION CONTACTO -->
-
-        <section id="seccionContacto">
-            <h2 class="mt-5 ms-5">Formulario de Contacto</h2>
-
-            <div>
-                <div class="row">
-                    <div class="col-md-12 d-flex justify-content-center">
-
-                        <!-- FORMULARIO DE CONTACTO -->
-                        <form class="estiloFormulario p-3">
-
-                            <div class="my-3">
-                                <label for="nombre">Nombre</label>
-                                <input type="text" class="form-control shadow-none border border-secondary-subtle"
-                                    placeholder="Ingrese su Nombre" id="nombre">
-                            </div>
-
-                            <div class="my-3">
-                                <label for="e-mail">E-mail</label>
-                                <input type="email" class="form-control shadow-none border border-secondary-subtle"
-                                    placeholder="Ingrese su E-mail" id="e-mail">
-                            </div>
-
-                            <div class="my-3">
-                                <textarea cols="30" rows="10"
-                                    class="form-control shadow-none border border-secondary-subtle"
-                                    placeholder="Ingrese su mensaje"></textarea>
-                            </div>
-
-                            <div>
-                                <input class="btn botonFormulario" type="reset">
-                                <input class="btn botonFormulario" type="submit">
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-
-        </section>
 
     </main>
+
+    
 
     <footer>
 
