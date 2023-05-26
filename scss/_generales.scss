@@ -46,3 +46,22 @@ svg {
     display: flex;
     justify-content: center;
 }
+
+@media screen and (max-width: 414px) {
+	// visible solo para version desktop
+	.mostrar_desktop {
+		display: none;
+	}
+}
+
+// @media screen and (min-width: 375px) {
+//     .version_mobile{
+//  width: 500px;
+ 
+
+// 	}
+
+// }
+
+
+

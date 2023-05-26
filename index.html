@@ -32,21 +32,18 @@
         <!-- MENU NAV -->
         <nav class="navbar navbar-expand-lg">
             <div class="container-fluid">
-                <a class="navbar-brand" href="index.html"><img src="img/logo.png" alt="Logo"></a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="#navbarNavAltMarkup">
-                    <div class="navbar-nav">
-                        <a class="nav-link" href="#seccionTurnos">Reserva de Turnos</a>
-                        <a class="nav-link" href="#seccionSedes">Sedes</a>
-                    </div>
+              <a class="navbar-brand" href="index.html"><img src="img/logo.png" alt="Logo"></a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                  <a class="nav-link" href="#seccionTurnos">Reserva de Turnos</a>
+                  <a class="nav-link" href="#seccionSede">Sede</a>
                 </div>
+              </div>
             </div>
-        </nav>
-
+          </nav>
     </header>
 
     <main>
@@ -55,7 +52,7 @@
         <section id="seccionInicio">
 
             <div class="estiloInicio">
-                <h1 class="titulo animate__animated animate__flash">Clínica de Traumatología</h1>
+                <h1 class="titulo animate__animated animate__flash mb-3 text-center">Clínica de Traumatología</h1>
 
                 <p>Somos un equipo de especialistas comprometidos con la salud y bienestar de nuestros pacientes.
                     Nuestra
@@ -81,14 +78,14 @@
 
             <div class="estiloTurnos">
 
-                <h2 class="mt-5 ms-5">Reserva de Turnos</h2>
+                <h2 class="mt-3 mb-3 text-center">Reserva de Turnos</h2>
 
                 <div>
                     <div class="row">
                         <div class="col-md-12 d-flex justify-content-center">
     
                             <!-- Formulario para agendar turno -->
-                            <form class="estiloFormulario p-3 w-50" id="formReserva">
+                            <form class="estiloFormulario p-3 version_mobile" id="formReserva">
     
                                 <h4>Ingrese sus Datos</h4>
                                 
@@ -148,28 +145,21 @@
             </div>
         </section>
 
-        <!-- SECCION SEDES -->
-        <section id="seccionSedes">
+        <!-- SECCION SEDE -->
+        <section id="seccionSede">
             <div class="estiloSedes mb-5">
 
-                <h2>Sedes</h2>
+                <h2 class="mb-3 text-center">Sede</h2>
 
                 <div class="container">
                     <div class="row">
 
                         <!-- SEDE CABA -->
-                        <div class="col-md-6 col-xs-12 p-3">
-                            <div>
+                        <div class="col-md-12 p-3">
+                            <div class="d-flex flex-column align-items-center">
                                 <h3>CABA</h3>
                                 <p>Echeverría 2340, Belgrano</p>
-                            </div>
-                        </div>
-
-                        <!-- SEDE TIGRE -->
-                        <div class="col-md-6 col-xs-12 p-3">
-                            <div>
-                                <h3>GBA Norte</h3>
-                                <p>Av. Cazón 1157, Tigre</p>
+                                <iframe class="mostrar_desktop" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3285.63953367844!2d-58.457388885610555!3d-34.562681080470135!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcb5d3c8877289%3A0xb2e051c58971b8c8!2sEcheverr%C3%ADa%202340%2C%20C1428DRP%20CABA!5e0!3m2!1ses!2sar!4v1674401693019!5m2!1ses!2sar" width="500" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                             </div>
                         </div>
                     </div>

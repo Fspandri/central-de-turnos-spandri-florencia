@@ -8,7 +8,7 @@
 .estiloTurnos {
   background-color: #D4C5E2;
   border-radius: 50px;
-  padding: 50px;
+  padding: 20px;
   margin-top: 30px;
 }
 
@@ -20,6 +20,7 @@
 }
 
 .estiloFormulario {
+  min-width: 50%;
   padding: 20px;
   border: 3px solid #4C6663;
   background-color: whitesmoke;
@@ -82,6 +83,12 @@ svg {
   color: #4C6663;
   display: flex;
   justify-content: center;
+}
+
+@media screen and (max-width: 414px) {
+  .mostrar_desktop {
+    display: none;
+  }
 }
 
 /*# sourceMappingURL=estilo.css.map */

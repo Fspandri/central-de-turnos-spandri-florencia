@@ -8,7 +8,7 @@
 .estiloTurnos {
     background-color: $background-color_2;
     border-radius: 50px;
-    padding: 50px;
+    padding: 20px;
     margin-top: 30px;
 }
 
@@ -20,6 +20,7 @@
 }
 
 .estiloFormulario {
+    min-width: 50%;
     padding: 20px;
     border: 3px solid $color_2;
     background-color: whitesmoke;
